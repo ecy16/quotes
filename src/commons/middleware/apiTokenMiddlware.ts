@@ -14,7 +14,9 @@ export class apiTokenMiddleware implements NestMiddleware {
   constructor(private readonly quotesService: QuotesService) {}
 
   use(req: Request, res: Response, next: NextFunction) {
-    this.logger.log(apiTokenMiddleware.name);
-    
+//     this.logger.log(apiTokenMiddleware.name);
+//     const userId = '123';
+// this.quotesService.setUserId(userId)
+//     next();
   }
 }

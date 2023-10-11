@@ -1,6 +1,10 @@
-import { Injectable } from '@nestjs/common';
-export type User = any;
+import { Injectable,NotFoundException, } from '@nestjs/common';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 
+
+
+export type User = any;
 
 @Injectable()
 export class UsersService {
@@ -15,10 +19,8 @@ export class UsersService {
       username: 'maria',
       password: 'guess',
     },
-  ];
-  async findOne(username:string): Promise<User|undefined>{
-    return this.users.find(user=>user.username===username)
- 
-}
-
+  ]
+  async findOne(username: string): Promise<User | undefined> {
+    return this.users.find(user => user.username === username);
+  }
 }
