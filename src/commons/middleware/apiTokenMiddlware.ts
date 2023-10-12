@@ -11,12 +11,12 @@ import { QuotesService } from 'src/quotes/quotes.service';
 export class apiTokenMiddleware implements NestMiddleware {
   private readonly logger = new Logger(apiTokenMiddleware.name);
 
-  constructor(private readonly quotesService: QuotesService) {}
+  constructor() {}
 
   use(req: Request, res: Response, next: NextFunction) {
 //     this.logger.log(apiTokenMiddleware.name);
 //     const userId = '123';
-// this.quotesService.setUserId(userId)
+// this.userService.setUserId(userId)
 //     next();
   }
 }

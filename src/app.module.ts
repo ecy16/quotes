@@ -32,7 +32,7 @@ import { UsersModule } from './users/users.module';
 })
 export class AppModule implements NestModule{
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(apiTokenMiddleware).forRoutes({path:'*',method:RequestMethod.ALL})
+    // consumer.apply(apiTokenMiddleware).forRoutes({path:'*',method:RequestMethod.ALL})
   }
   constructor(private dataSource: DataSource) {}
 }
