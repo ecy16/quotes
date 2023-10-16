@@ -1,19 +1,31 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.sass']
+  styleUrls: ['./login.component.sass'],
 })
 export class LoginComponent {
-user={
-  username:'',
-  password:''
-}
+  constructor(private userService: UserService) {}
 
-constructor(private router:Router){}
+  register() {
+    const user = {
+      username: '',
+      password: '',
+    };
+    // this.userService.register(user).subscribe(
+    //   (response)=>{
+    //     console.log('Registration succesful',response);
+        
+    //   },
+    //   (error)=>{
+    //     console.log('Registratio error',error);
+        
+    //   }
+    // )
+  }
 
-onSubmit(){
-  this.router.navigate(['/'])
-}
+  
+  
 }

@@ -27,4 +27,9 @@ export class AuthController {
   getProfile(@Request() req) {
     return req.user;
   }
+  // @Post('login')
+  // async login(@Body() userLoginDto: UserLoginDto) {
+  //   const token = await this.authService.signIn(userLoginDto.username, userLoginDto.password);
+  //   return { access_token: token };
+  // }
 }
