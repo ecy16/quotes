@@ -1,14 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { QuotesService } from './quotes/quotes.service';
+import { UserService } from 'login/src/app/user.service';
+import { User } from './users/entities/user.entity';
+import { UsersService } from './users/users.service';
 
 @Injectable()
 export class AppService {
   [x: string]: any;
-  constructor(private readonly quotesService:QuotesService){}
+  constructor(){}
 
   getHello(): string {
-    const userId = this.quotesService.getUserId()
-    this.logger.log('getHello userId:',userId)
+    
     return 'Hello World!';
   }
   

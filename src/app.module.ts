@@ -12,8 +12,9 @@ import { Author } from './authors/entities/author.entity';
 import { apiTokenMiddleware } from './commons/middleware/apiTokenMiddlware';
 import { QuotesService } from './quotes/quotes.service';
 import { quotesRepository } from './quotes/quotes.repository';
-import { AuthModule } from './auth/auth.module';
+// import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
+import { User } from './users/entities/user.entity';
 
 @Module({
   imports: [QuotesModule, AuthorsModule, CategoriesModule,ConfigModule.forRoot({
@@ -25,8 +26,10 @@ import { UsersModule } from './users/users.module';
     username: 'postgres',
     password: 'password',
     database: 'NinjaApi',
-    entities: [Quote,Author],
-    synchronize: true,}), AuthModule, UsersModule],
+    entities: [Quote,Author, User],
+    synchronize: true
+  }), 
+     UsersModule],
   controllers: [AppController],
   providers: [AppService,QuotesService,quotesRepository],
 })

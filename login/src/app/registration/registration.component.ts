@@ -16,7 +16,7 @@ export class RegistrationComponent {
   register(){
     this.userService.register(this.user).subscribe(
       (response:any)=>{
-        console.log('Registration succesful',response);
+        console.log(this.user);
         
       },
       (error:any)=>{

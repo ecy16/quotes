@@ -10,9 +10,9 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   register(user: any) {
-    return this.http.post(`${this.apiUrl}/register`, user);
+    return this.http.post(`${this.apiUrl}/users/create`, user);
   }
   login(credentials: { username: string, password: string }) {
-    return this.http.post(`${this.apiUrl}/login`, credentials);
+    return this.http.post(`${this.apiUrl}/auth/login`, credentials);
   }
 }
