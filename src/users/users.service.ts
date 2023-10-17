@@ -22,6 +22,11 @@ export class UsersService {
   async findAll(): Promise<User[]> {
     return await this.userRepository.find();
   }
+async findByLogin(username:string):Promise<User | undefined>{
+  return this.userRepository.findOne({where:{username}})
+}
+
+  
   // async update(username:string,updateUserDto:UpdateUserDto){
    
   //   return await this.userRepository.save(updated)

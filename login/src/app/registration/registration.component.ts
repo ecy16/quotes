@@ -1,5 +1,6 @@
 import { Component} from '@angular/core';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -11,7 +12,7 @@ export class RegistrationComponent {
     email: '',
     password: '',
   };
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   register(){
     this.userService.register(this.user).subscribe(
@@ -24,6 +25,12 @@ export class RegistrationComponent {
         
       }
     )
+  }
+
+  navigateToLogin() {
+    this.router.navigate(['/login']);
+    console.log("logged in");
+    
   }
   
 }
