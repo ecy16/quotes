@@ -17,6 +17,21 @@ export class UsersController {
   async create(@Body() userDto: CreateUserDto): Promise<any> {
     return this.usersService.create(userDto);
   }
+@Get()
+findAll(){
+  return this.usersService.findAll()
+}
+@Get('username')
+  findOne(@Param('username') username: string) {
+    return this.usersService.findOne(username);
+  }
+  // @Patch(':id')
+  // update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+  //   return this.usersService.update(+id, updateUserDto);
+  // }
 
-
+  @Delete('username')
+  remove(@Param('username') username: string) {
+    return this.usersService.remove(username);
+  }
 }
