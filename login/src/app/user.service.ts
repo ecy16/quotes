@@ -13,6 +13,6 @@ export class UserService {
     return this.http.post(`${this.apiUrl}/users/create`, user);
   }
   login(credentials: { username: string, password: string }) {
-    return this.http.post(`${this.apiUrl}/auth/login`, credentials);
+    return this.http.post(`${this.apiUrl}/users/login`, credentials);
   }
 }

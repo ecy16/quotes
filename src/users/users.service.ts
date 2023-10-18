@@ -15,23 +15,36 @@ export class UsersService {
   async create(userDto: CreateUserDto): Promise<User> {
     return await this.userRepository.save(userDto);
   }
+  async findUser(username:string): Promise<User> {
+    const user = this.userRepository.findOne({where: {username}})
 
-  async findOne(username: string): Promise<User | undefined> {
-    return this.userRepository.findOne({where:{username}});
+    return user
+
   }
   async findAll(): Promise<User[]> {
     return await this.userRepository.find();
   }
-async findByLogin(username:string):Promise<User | undefined>{
-  return this.userRepository.findOne({where:{username}})
-}
+  async remove(username:string){
+    return await this.userRepository.delete(username)
+  }
+
+  // async findOneByEmail(email: string): Promise<User> {
+  //   const user = await this.userRepository.findOne({ where: { email } });
+  
+  //   if (!user) {
+  //     throw new NotFoundException('User not found');
+  //   }
+  
+  //   return user;
+  // }
+  
+// async findByLogin(username:string):Promise<User | undefined>{
+//   return this.userRepository.findOne({where:{username}})
+// }
 
   
   // async update(username:string,updateUserDto:UpdateUserDto){
    
   //   return await this.userRepository.save(updated)
   // }
-  async remove(username:string){
-    return await this.userRepository.delete(username)
-  }
 }

@@ -12,7 +12,7 @@ import { Author } from './authors/entities/author.entity';
 import { apiTokenMiddleware } from './commons/middleware/apiTokenMiddlware';
 import { QuotesService } from './quotes/quotes.service';
 import { quotesRepository } from './quotes/quotes.repository';
-// import { AuthModule } from './auth/auth.module';
+import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { User } from './users/entities/user.entity';
 
