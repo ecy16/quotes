@@ -19,7 +19,7 @@ export class AuthService {
   // const hashedPassword = await bcrypt.hash(password, salt);
 
   async login(username: string, password: string) {
-    @Res(options{passthrough:true}) respon    const user = await this.usersService.findUser(username);
+       const user = await this.usersService.findUser(username);
     console.log("user----", user);
 
     if (!user) {

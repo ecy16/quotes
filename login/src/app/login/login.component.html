@@ -5,11 +5,11 @@
         <form (ngSubmit)="login()">
         <div class="mb-6">
           <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Name</label>
-          <input type="username" id="username" class="text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 "[(ngModel)]="user.username" placeholder="Enter your name" required>
+          <input type="username" id="username" class="text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 "[(ngModel)]="formData.username"  placeholder="Enter your name" required>
         </div>
         <div class="mb-6">
           <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
-          <input type="password" id="password" class=" text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 "[(ngModel)]="user.password " placeholder="Enter your password" required>
+          <input type="password" id="password" class=" text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 "[(ngModel)]="formData.password " placeholder="Enter your password" required>
         </div>
         <div class="flex items-start mb-6">
           <div class="flex items-center h-5">
