@@ -28,29 +28,13 @@ export class AuthController {
   
   @Post('sign-in')
   async signIn(@Body() loginUserDto: LoginUserDto) {
-    return this.authService.login(loginUserDto);
+    const {username, password} = loginUserDto
+    return this.authService.login(username, password);
   }
-
-
-
-
-
-
-
+  @UseGuards(AuthGuard)
+  @Get('profile')
+  getProfile(@Request() req) {
+    return req.user;
+  }
   
-  // @Post('login')
-  // signIn(@Body() signInDto: LoginUserDto) {
-  //   const {username, password} = signInDto
-  //   return this.authService.signIn(username, password);
-  // }
-  // @UseGuards(AuthGuard)
-  // @Get('profile')
-  // getProfile(@Request() req) {
-  //   return req.user;
-  // }
-  // @Post('login')
-  // async login(@Body() userLoginDto: UserLoginDto) {
-  //   const token = await this.authService.signIn(userLoginDto.username, userLoginDto.password);
-  //   return { access_token: token };
-  // }
 }

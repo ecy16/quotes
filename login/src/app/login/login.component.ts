@@ -11,23 +11,13 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.component.sass'],
 })
 export class LoginComponent {
-//   (response)=>{
-//     console.log('Registration succesful',response);
-//   },
-//   (error)=>{
-//     console.log('Registratio error',error);
-//   }
-// )
 
   constructor(
     private userService: UserService,
     authService: AuthService,
   ) {}
 
-  user={
-    username:'',
-    password:''
-  }
+  
 
   login() {
     this.userService.login({
@@ -37,15 +27,4 @@ export class LoginComponent {
       console.log('login successful', response);
     });
   }
-
-  // this.userService.register(user).subscribe(
-  //   (response)=>{
-  //     console.log('Registration succesful',response);
-
-  //   },
-  //   (error)=>{
-  //     console.log('Registratio error',error);
-
-  //   }
-  // )
 }

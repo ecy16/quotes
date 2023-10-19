@@ -10,11 +10,11 @@ import {
   export class User {
     @PrimaryGeneratedColumn()
     id: number;
-  
-    @Column()
-    username: string;
 
     @Column({unique: true})
+    username: string;
+
+    @Column()
     email: string;
   
     @Column()
@@ -25,8 +25,8 @@ import {
     // async hashPassword() {
     //   this.password = await bcrypt.hash(this.password, 10);
     // }
-    async validatePassword(password: string): Promise<boolean> {
-      return bcrypt.compare(password, this.password);
-    }
+    // async validatePassword(password: string): Promise<boolean> {
+    //   return bcrypt.compare(password, this.password);
+    // }
   }
   

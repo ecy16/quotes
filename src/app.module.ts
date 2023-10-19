@@ -1,4 +1,9 @@
-import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
+import {
+  MiddlewareConsumer,
+  Module,
+  NestModule,
+  RequestMethod,
+} from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
@@ -7,7 +12,7 @@ import { QuotesModule } from './quotes/quotes.module';
 import { AuthorsModule } from './authors/authors.module';
 import { CategoriesModule } from './categories/categories.module';
 import { DataSource } from 'typeorm';
-import {Quote} from './quotes/entities/quote.entity'
+import { Quote } from './quotes/entities/quote.entity';
 import { Author } from './authors/entities/author.entity';
 import { apiTokenMiddleware } from './commons/middleware/apiTokenMiddlware';
 import { QuotesService } from './quotes/quotes.service';
@@ -17,23 +22,30 @@ import { UsersModule } from './users/users.module';
 import { User } from './users/entities/user.entity';
 
 @Module({
-  imports: [QuotesModule, AuthorsModule, CategoriesModule,ConfigModule.forRoot({
-    isGlobal:true,
-  }),TypeOrmModule.forRoot({
-    type: 'postgres',
-    host: 'localhost',
-    port: 5432,
-    username: 'postgres',
-    password: 'password',
-    database: 'NinjaApi',
-    entities: [Quote,Author, User],
-    synchronize: true
-  }), 
-     UsersModule],
+  imports: [
+    QuotesModule,
+    AuthorsModule,
+    CategoriesModule,
+    AuthModule,
+    UsersModule,
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: 'postgres',
+      password: 'password',
+      database: 'NinjaApi',
+      entities: [Quote, Author, User],
+      synchronize: true,
+    }),
+  ],
   controllers: [AppController],
-  providers: [AppService,QuotesService,quotesRepository],
+  providers: [AppService, QuotesService, quotesRepository],
 })
-export class AppModule implements NestModule{
+export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     // consumer.apply(apiTokenMiddleware).forRoutes({path:'*',method:RequestMethod.ALL})
   }

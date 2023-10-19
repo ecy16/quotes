@@ -4,6 +4,8 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
+import { RegisterUserDto } from './dto/registerUser.dto';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
@@ -12,9 +14,20 @@ export class UsersService {
     private userRepository: Repository<User>,
   ) {}
 
-  async create(userDto: CreateUserDto): Promise<User> {
-    return await this.userRepository.save(userDto);
-  }
+async create(registerUserDto:RegisterUserDto):Promise<User>{
+  const { username, password ,email} = registerUserDto;
+
+  const salt = await bcrypt.genSalt();
+  const hashedPassword = await bcrypt.hash(password, salt);
+  
+  const user = new User();
+  user.username = username;
+  user.email=email;
+  user.password = hashedPassword;
+  
+  return this.userRepository.save(user);
+}
+
   async findUser(username:string): Promise<User> {
     const user = this.userRepository.findOne({where: {username}})
 
@@ -24,27 +37,9 @@ export class UsersService {
   async findAll(): Promise<User[]> {
     return await this.userRepository.find();
   }
-  async remove(username:string){
-    return await this.userRepository.delete(username)
+  async remove(password:string){
+    return await this.userRepository.delete(password)
   }
 
-  // async findOneByEmail(email: string): Promise<User> {
-  //   const user = await this.userRepository.findOne({ where: { email } });
   
-  //   if (!user) {
-  //     throw new NotFoundException('User not found');
-  //   }
-  
-  //   return user;
-  // }
-  
-// async findByLogin(username:string):Promise<User | undefined>{
-//   return this.userRepository.findOne({where:{username}})
-// }
-
-  
-  // async update(username:string,updateUserDto:UpdateUserDto){
-   
-  //   return await this.userRepository.save(updated)
-  // }
 }
