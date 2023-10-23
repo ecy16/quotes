@@ -9,6 +9,5 @@ export class Author {
     @Column()
     name: string
 
-    @OneToMany(()=> Quote, (quote)=> quote.author )
-    quote: Quote[]
+  
 }

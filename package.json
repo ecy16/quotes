@@ -32,6 +32,7 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
     "login": "^0.8.0",
+    "nest-access-control": "^3.1.0",
     "new": "^0.1.1",
     "ng": "^0.0.0",
     "passport": "^0.6.0",

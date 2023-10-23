@@ -1,4 +1,4 @@
-import { Injectable, Options, UnauthorizedException } from '@nestjs/common';
+import { Injectable,  UnauthorizedException } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
@@ -6,7 +6,6 @@ import { LoginUserDto } from 'src/users/dto/loginUser.dto';
 import * as bcrypt from 'bcrypt';
 import { jwtConstants } from './constants';
 import { error, log } from 'console';
-import { Response } from 'express';
 import { PassThrough } from 'stream';
 
 @Injectable()
@@ -21,7 +20,6 @@ export class AuthService {
   async login(username: string, password: string) {
        const user = await this.usersService.findUser(username);
     console.log("user----", user);
-
     if (!user) {
       throw new UnauthorizedException('Invalid User Credentials');
     }
@@ -42,4 +40,12 @@ export class AuthService {
       
     }
   }
+  // async validateUser(username:string,password:string): Promise<any>{
+  //   const user = await this.usersService.findUser(username);
+  //   if(user && (await user.validatePassword(password))){
+  //     const {password,...result}=user;
+  //     return result;
+  //   }
+  //   return null;
+  // }
 }

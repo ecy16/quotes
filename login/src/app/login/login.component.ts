@@ -10,6 +10,7 @@ import { error } from 'console';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.sass'],
+  standalone:true
 })
 export class LoginComponent {
 
@@ -23,7 +24,27 @@ export class LoginComponent {
     private http:HttpClient,
     authService: AuthService,
   ) {}
+login(){
+  console.log("MMMMAAAPPP",this.formData);
+  this.userService.login(this.formData).subscribe((response) =>{
 
+  },
+  (error:any)=>{
+    console.log('Registration error',error);
+      })
+}
+  
+  // login() {
+  //   this.userService.login({
+  //     username:'',
+  //     password: ''
+  //   }).subscribe((response) => {
+  //     console.log('login successful', response);
+  //   });
+  }
+
+ 
+  
   // login(){
   //   this.http.post('http://localhost:3000',this.formData).subscribe((response)=>{
   //     console.log('hey');
@@ -31,12 +52,4 @@ export class LoginComponent {
   //   })
   // }
 
-  login() {
-    this.userService.login({
-      username:'',
-      password: ''
-    }).subscribe((response) => {
-      console.log('login successful', response);
-    });
-  }
-}
+

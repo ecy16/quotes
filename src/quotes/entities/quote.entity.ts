@@ -16,7 +16,5 @@ export class Quote {
 
   @Column()
   text: string;
-
-  @ManyToOne(() => Author, (author) => author.quote)
-  author: Author;
+  
 }

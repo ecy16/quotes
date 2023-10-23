@@ -4,7 +4,6 @@ import { UpdateQuoteDto } from './dto/update-quote.dto';
 import { Repository } from 'typeorm';
 import { Quote } from './entities/quote.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { quotesRepository } from './quotes.repository';
 
 @Injectable({scope:Scope.REQUEST})
 export class QuotesService {
@@ -18,26 +17,16 @@ export class QuotesService {
     return this.userId;
   }
 
-  quotes=[
-    {
-      id:1,
-      text:'Spread love everywhere you go'
-    },
-    {
-      id:2,
-      text:'The only thing we have to fear is fear itself'
-    },
-    {
-      id:3,
-      text:'Darkness cannot drive out darkness: only light can do that.'
-    }
-  ]
-
-  constructor(@InjectRepository(quotesRepository)
-  private quotesRepository:quotesRepository)
+  
+  constructor(@InjectRepository(Quote)
+  private quotesRepository:Repository<Quote>)
   {}
   create(createQuoteDto: CreateQuoteDto) {
-    return 'This action adds a new quote';
+    const { text} = createQuoteDto;
+     const quote = new Quote();
+     quote.text= text;
+       return this.quotesRepository.save(quote)
+
   }
 
   findAllQuotes() {

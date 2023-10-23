@@ -5,6 +5,7 @@ import {
     BeforeInsert,
   } from 'typeorm';
   import * as bcrypt from 'bcrypt';
+import { UserRoles } from 'src/auth/user.roles';
   
   @Entity()
   export class User {
@@ -19,7 +20,9 @@ import {
   
     @Column()
     password: string;
-
+@Column({ type:'enum', enum:UserRoles,
+default:UserRoles.USER})
+roles:UserRoles;
     
     // @BeforeInsert()
     // async hashPassword() {

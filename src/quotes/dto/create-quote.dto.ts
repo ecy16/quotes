@@ -7,7 +7,7 @@ export class CreateQuoteDto {
   @IsString()
   @IsNotEmpty()
   
-  quote:string;
+  text:string;
   id:number;
 
   @ValidateNested()

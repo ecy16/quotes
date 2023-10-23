@@ -9,8 +9,7 @@ export class QuotesController {
 
   @Post('create')
   createQuotes(@Body() createQuoteDto:CreateQuoteDto) {
-console.log(createQuoteDto);
-
+ return this.quotesService.create(createQuoteDto)
   }
 
   @Get()

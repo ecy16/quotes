@@ -16,10 +16,11 @@ import { Quote } from './quotes/entities/quote.entity';
 import { Author } from './authors/entities/author.entity';
 import { apiTokenMiddleware } from './commons/middleware/apiTokenMiddlware';
 import { QuotesService } from './quotes/quotes.service';
-import { quotesRepository } from './quotes/quotes.repository';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { User } from './users/entities/user.entity';
+import { AccessControlModule } from 'nest-access-control';
+import { roles } from './auth/user.roles';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { User } from './users/entities/user.entity';
     CategoriesModule,
     AuthModule,
     UsersModule,
+    AccessControlModule.forRoles(roles),
     ConfigModule.forRoot({
       isGlobal: true,
     }),
@@ -43,7 +45,7 @@ import { User } from './users/entities/user.entity';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService, QuotesService, quotesRepository],
+  providers: [AppService],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
