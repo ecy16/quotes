@@ -21,6 +21,8 @@ import { UsersModule } from './users/users.module';
 import { User } from './users/entities/user.entity';
 import { AccessControlModule } from 'nest-access-control';
 import { roles } from './auth/user.roles';
+ import { AccessControl } from 'accesscontrol';
+
 
 @Module({
   imports: [
@@ -29,6 +31,7 @@ import { roles } from './auth/user.roles';
     CategoriesModule,
     AuthModule,
     UsersModule,
+    AccessControl,
     AccessControlModule.forRoles(roles),
     ConfigModule.forRoot({
       isGlobal: true,

@@ -6,7 +6,7 @@ import {
   PrimaryGeneratedColumn,
   BaseEntity,
   OneToMany,
-  ManyToOne,
+  // ManyToOne,
 } from 'typeorm';
 
 @Entity()

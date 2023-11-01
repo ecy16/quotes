@@ -30,7 +30,7 @@ export class QuotesService {
   }
 
   findAllQuotes() {
-    return `This action returns all quotes`;
+    return  `This action returns all quotes`;
   }
 
   findOne(id: number) {

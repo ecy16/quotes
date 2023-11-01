@@ -22,6 +22,7 @@ export class AuthController {
   ) {}
 
   @Post('sign-up')
+    // @UseGuards(AuthGuard)
   async signUp(@Body() registerUserDto: RegisterUserDto) {
     return this.usersService.create(registerUserDto);
   }
@@ -30,8 +31,9 @@ export class AuthController {
     const {username, password} = loginUserDto
     return this.authService.login(username, password);
   }
-  @UseGuards(AuthGuard)
   @Get('profile')
+    // @UseGuards(AuthGuard)
+
   getProfile(@Request() req) {
     return req.user;
   }
