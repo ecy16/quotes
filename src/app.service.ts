@@ -6,12 +6,14 @@ import { UsersService } from './users/users.service';
 
 @Injectable()
 export class AppService {
-  [x: string]: any;
-  constructor(){}
-
-  getHello(): string {
-    
-    return 'Hello World!';
-  }
+ googleLogin(req){
+if(!req.user){
+return 'No User From Google'
+}
+return{
+  message:'user info from google',
+  user:req.user
+}
+ }
   
 }

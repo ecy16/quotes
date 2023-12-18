@@ -1,5 +1,5 @@
 <div>
-  <div class="registration-container p-4 bg-sky-400 text-white rounded-lg">
+  <div class="registration-container p-4 bg-sky-400 text-white rounded-lg w-2/5 m-auto">
     <h2 class="p-4">Register</h2>
     <form (ngSubmit)="register()" class="ml-4">
       <div class="form-group ">
@@ -16,10 +16,9 @@
       </div>
       <button type="submit" class="mt-4 text-white bg-blue-400  border-blue-500 rounded-lg w-24 h-10">Register</button>
     </form>
-    <p>Already have an account? <span (click)="navigateToLogin()" >Login</span></p>
+    <p>Already have an account? <a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Login</a></p>
 
 
   </div>
 </div>
-
 

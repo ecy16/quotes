@@ -8,7 +8,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { ACGuard, UseRoles } from 'nest-access-control';
 
 @Controller('quotes')
-@UseGuards(RoleGuard)
+// @UseGuards(RoleGuard)
 
 export class QuotesController {
   constructor(private readonly quotesService: QuotesService) {}

@@ -8,9 +8,11 @@ import { RouterModule } from '@angular/router';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { AuthComponent } from './auth/auth.component';
+import { HomeComponent } from './home/home.component';
+import { QuotesComponent } from './quotes/quotes.component';
 
 @NgModule({
-  declarations: [AppComponent,  RegistrationComponent, AuthComponent],
+  declarations: [AppComponent,  RegistrationComponent, AuthComponent,LoginComponent, HomeComponent, QuotesComponent],
   imports: [
     BrowserModule,
     RouterModule,

@@ -22,6 +22,7 @@ import { User } from './users/entities/user.entity';
 import { AccessControlModule } from 'nest-access-control';
 import { roles } from './auth/user.roles';
  import { AccessControl } from 'accesscontrol';
+import { GoogleStategy } from './users/google.strategy';
 
 
 @Module({
@@ -41,14 +42,14 @@ import { roles } from './auth/user.roles';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'password',
+      password: 'Password',
       database: 'NinjaApi',
       entities: [Quote, Author, User],
       synchronize: true,
     }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService,GoogleStategy],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
